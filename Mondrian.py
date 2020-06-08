@@ -13,7 +13,7 @@ import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
-fp_name = FontProperties(fname=r'./static/fonts/BRADHITC.TTF', size=25)
+fp_name = FontProperties(fname=r'./static/fonts/BRADHITC.ttf', size=25)
 import sys
 sys.setrecursionlimit(10000)
 
@@ -237,6 +237,7 @@ class Mondrian():
 
             plt.axis('off')
             plt.tight_layout(pad=0)
+            print("SaveFig: " + "./static/image/Mondrian_"+str(image_num)+mongon+".png")
             plt.savefig("./static/image/Mondrian_"+str(image_num)+mongon+".png", transparent = True, bbox_inches = 'tight', pad_inches = 0)
             plt.close()
 
@@ -244,7 +245,7 @@ class Mondrian():
 
 
 if __name__ == '__main__':
-    path_pallete="./inputs/palette.csv",
+    path_pallete="./inputs/palette.csv"
     path_property="./inputs/property.csv"
     
     color_dict = {}
@@ -268,4 +269,4 @@ if __name__ == '__main__':
 
     for i in range(5):
         print(i)
-        a, b = m.make_figure(i, "_user", save=False)
+        a, b = m.make_figure(i, "_user", save=True)

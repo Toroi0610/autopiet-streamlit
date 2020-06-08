@@ -3,13 +3,13 @@ import csv
 import streamlit as st
 from Mondrian import Mondrian
 
-@st.cache
-def main():
-    st.title("Streamlit AutoPiet")
 
+st.title("Streamlit AutoPiet")
+
+def main():
     # Download best configuration
     # To do : Inputs config from Web Page
-    path_pallete="./inputs/palette.csv",
+    path_pallete="./inputs/palette.csv"
     path_property="./inputs/property.csv"
 
     color_dict = {}
@@ -28,11 +28,13 @@ def main():
                 row_sep = row[0].split(",")
                 property_dict[row_sep[0]] = row_sep[1:]
 
-
     m = Mondrian(color_dict=color_dict, property_dict=property_dict)
 
-    image_out, _ = m.make_figure(0, mongon=name, save=False)
-    st.image(image_out, use_column_width=True)
+    name = st.text_input('Name', 'User')
+    if st.button('Run'):
+        image_out, _ = m.make_figure(0, mongon="_"+name, save=True)
+        st.image("./static/image/Mondrian_0_"+name+".png", caption=f"Decompositoin by {name}'s AutoPiet",  use_column_width=True)
+        # st.image(image_out, caption=f"Decompositoin by {name}'s AutoPiet",  use_column_width=True)
 
 if __name__ == "__main__":
     main()
