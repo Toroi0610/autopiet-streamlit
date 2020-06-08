@@ -238,7 +238,7 @@ class Mondrian():
             plt.axis('off')
             plt.tight_layout(pad=0)
             print("SaveFig: " + "./static/image/Mondrian_"+str(image_num)+mongon+".png")
-            plt.savefig("./static/image/Mondrian_"+str(image_num)+mongon+".png", transparent = True, bbox_inches = 'tight', pad_inches = 0)
+            plt.savefig("./static/image/Mondrian_"+str(image_num)+mongon+".png", transparent=True, bbox_inches='tight', pad_inches=0)
             plt.close()
 
         return fig_mat, points_and_shapes
