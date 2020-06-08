@@ -1,0 +1,12 @@
+color_name,red,green,blue
+black,0,0,0
+white,1,1,1
+red,1,0,0
+green,0,1,0
+blue,0,0,1
+yellow,1,1,0
+gray,0.3,0.3,0.3
+purple,1,0,1
+cyan,0,1,1
+indigo_blue,0,0.2,0.5
+orange,0.8,0.2,0

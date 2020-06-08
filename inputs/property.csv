@@ -1,0 +1,13 @@
+property,A,B,C,D,E
+num_cross_point,2
+prob_shape,1,1,1,1,1
+size,55,55
+figure_size,8,8
+color_of_line,black
+line_width,1
+color_list,red,blue,yellow
+num_color,1,1,1
+diamond_length,0
+devide_line_width,6,5,3,2
+prob_devide,1,1,2,4
+name,user
