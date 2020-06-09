@@ -1,4 +1,5 @@
 import csv
+from os import remove
 
 import streamlit as st
 from Mondrian import Mondrian
@@ -37,6 +38,7 @@ def main():
                  caption=f"Decompositoin by {name}'s AutoPiet",
                  #use_column_width=True,
                  width=600)
+        remove("./static/image/Mondrian_0_"+name+".png")
 
 if __name__ == "__main__":
     main()
