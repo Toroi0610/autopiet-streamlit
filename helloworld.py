@@ -4,7 +4,7 @@ import streamlit as st
 from Mondrian import Mondrian
 
 
-st.title("Streamlit AutoPiet")
+st.sidebar.title("AutoPiet")
 
 def main():
     # Download best configuration
@@ -33,7 +33,10 @@ def main():
     name = st.sidebar.text_input('Name', 'User')
     if st.sidebar.button('Run'):
         image_out, _ = m.make_figure(0, name=name, save=True)
-        st.image("./static/image/Mondrian_0_"+name+".png", caption=f"Decompositoin by {name}'s AutoPiet",  use_column_width=True)
+        st.image("./static/image/Mondrian_0_"+name+".png",
+                 caption=f"Decompositoin by {name}'s AutoPiet",
+                 #use_column_width=True,
+                 width=600)
 
 if __name__ == "__main__":
     main()
