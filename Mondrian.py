@@ -10,7 +10,7 @@ import csv
 # import pandas as pd
 import numpy as np
 import matplotlib as mpl
-mpl.use('Agg')
+# mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 fp_name = FontProperties(fname=r'./static/fonts/BRADHITC.ttf', size=25)
@@ -18,7 +18,7 @@ import sys
 sys.setrecursionlimit(10000)
 
 class Mondrian():
-    def __init__(self, color_dict, property_dict, name=None):
+    def __init__(self, color_dict, property_dict):
         """
 
         キャンバス作り
@@ -73,12 +73,6 @@ class Mondrian():
 
         # 分断線の太さ
         self.prob_devide = list(map(float, property_dict["prob_devide"]))
-
-        # 名前
-        if name == None:
-            self.name = property_dict["name"][0]
-        else:
-            self.name = name
 
 
     def decide_shape(self):
@@ -179,7 +173,7 @@ class Mondrian():
 
 
 
-    def make_figure(self, image_num, mongon="", save=True):
+    def make_figure(self, image_num, name="User", save=True):
         fig_mat = np.ones([self.matsize[0],self.matsize[1], 3], dtype='float32')
         points_and_shapes = self.make_property()
         row_line = np.ones([1, self.matsize[1],3])*self.line_color
@@ -232,13 +226,12 @@ class Mondrian():
             fig, ax = plt.subplots(1, 1, figsize=self.figsize, frameon=False)
             ax.imshow(fig_mat)
 
-            if self.name != None:
-                ax.text(0.01*self.matsize[1], 0.95*self.matsize[0], self.name, color="black", fontproperties=fp_name)
+            ax.text(0.01*self.matsize[1], 0.95*self.matsize[0], name, color="black", fontproperties=fp_name)
 
             plt.axis('off')
             plt.tight_layout(pad=0)
-            print("SaveFig: " + "./static/image/Mondrian_"+str(image_num)+mongon+".png")
-            plt.savefig("./static/image/Mondrian_"+str(image_num)+mongon+".png", transparent=True, bbox_inches='tight', pad_inches=0)
+            print("SaveFig: " + f"./static/image/Mondrian_{image_num}_{name}.png")
+            plt.savefig(f"./static/image/Mondrian_{image_num}_{name}.png", transparent=True, bbox_inches='tight')
             plt.close()
 
         return fig_mat, points_and_shapes
@@ -264,9 +257,9 @@ if __name__ == '__main__':
                 row_sep = row[0].split(",")
                 property_dict[row_sep[0]] = row_sep[1:]
 
-
     m = Mondrian(color_dict=color_dict, property_dict=property_dict)
 
     for i in range(5):
         print(i)
-        a, b = m.make_figure(i, "_user", save=True)
+        a, b = m.make_figure(i, "user", save=True)
+        print(a)

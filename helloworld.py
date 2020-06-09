@@ -30,11 +30,10 @@ def main():
 
     m = Mondrian(color_dict=color_dict, property_dict=property_dict)
 
-    name = st.text_input('Name', 'User')
-    if st.button('Run'):
-        image_out, _ = m.make_figure(0, mongon="_"+name, save=True)
+    name = st.sidebar.text_input('Name', 'User')
+    if st.sidebar.button('Run'):
+        image_out, _ = m.make_figure(0, name=name, save=True)
         st.image("./static/image/Mondrian_0_"+name+".png", caption=f"Decompositoin by {name}'s AutoPiet",  use_column_width=True)
-        # st.image(image_out, caption=f"Decompositoin by {name}'s AutoPiet",  use_column_width=True)
 
 if __name__ == "__main__":
     main()
