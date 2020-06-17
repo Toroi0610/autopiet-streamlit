@@ -6,6 +6,10 @@ from Mondrian import Mondrian
 
 
 st.sidebar.title("AutoPiet")
+st.image("./static/image/Mondrian_4_Candy.png",
+         caption=f"Decompositoin by Candy's AutoPiet",
+         #use_column_width=True,
+         width=600)
 
 def main():
     # Download best configuration

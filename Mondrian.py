@@ -226,7 +226,7 @@ class Mondrian():
             fig, ax = plt.subplots(1, 1, figsize=self.figsize, frameon=False)
             ax.imshow(fig_mat)
 
-            ax.text(0.01*self.matsize[1], 0.95*self.matsize[0], name, color="black", fontproperties=fp_name)
+            ax.text(0.05*self.matsize[1], 0.95*self.matsize[0], name, color="black", fontproperties=fp_name)
 
             plt.axis('off')
             plt.tight_layout(pad=0)
@@ -261,5 +261,5 @@ if __name__ == '__main__':
 
     for i in range(5):
         print(i)
-        a, b = m.make_figure(i, "user", save=True)
+        a, b = m.make_figure(i, "Candy", save=True)
         print(a)
