@@ -6,9 +6,9 @@ from Mondrian import Mondrian
 
 
 st.sidebar.title("AutoPiet")
-default = True
 
 def main():
+    default = True
     # Download best configuration
     # To do : Inputs config from Web Page
     path_pallete="./inputs/palette.csv"
