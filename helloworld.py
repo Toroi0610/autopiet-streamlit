@@ -8,7 +8,6 @@ from Mondrian import Mondrian
 st.sidebar.title("AutoPiet")
 
 def main():
-    default = True
     # Download best configuration
     # To do : Inputs config from Web Page
     path_pallete="./inputs/palette.csv"
@@ -32,11 +31,10 @@ def main():
 
     m = Mondrian(color_dict=color_dict, property_dict=property_dict)
 
-    if default:
-        st.image("./static/image/Mondrian_4_Candy.png",
-            caption=f"Decompositoin by Candy's AutoPiet",
-            #use_column_width=True,
-            width=600)
+    st.sidebar.image("./static/image/Mondrian_4_Candy.png",
+        caption=f"Decompositoin by Candy's AutoPiet",
+        #use_column_width=True,
+        width=200)
 
     name = st.sidebar.text_input('Name', 'User')
     if st.sidebar.button('Run'):
