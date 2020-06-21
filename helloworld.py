@@ -6,10 +6,7 @@ from Mondrian import Mondrian
 
 
 st.sidebar.title("AutoPiet")
-st.image("./static/image/Mondrian_4_Candy.png",
-         caption=f"Decompositoin by Candy's AutoPiet",
-         #use_column_width=True,
-         width=600)
+default = True
 
 def main():
     # Download best configuration
@@ -35,8 +32,15 @@ def main():
 
     m = Mondrian(color_dict=color_dict, property_dict=property_dict)
 
+    if default:
+        st.image("./static/image/Mondrian_4_Candy.png",
+            caption=f"Decompositoin by Candy's AutoPiet",
+            #use_column_width=True,
+            width=600)
+
     name = st.sidebar.text_input('Name', 'User')
     if st.sidebar.button('Run'):
+        default = False
         image_out, _ = m.make_figure(0, name=name, save=True)
         st.image("./static/image/Mondrian_0_"+name+".png",
                  caption=f"Decompositoin by {name}'s AutoPiet",
