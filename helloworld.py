@@ -35,10 +35,15 @@ def main():
         #use_column_width=True,
         width=200)
 
-    name = st.sidebar.text_input('Name', 'User')
-    color_1 = st.sidebar.color_picker("Color 1", value="#CE2E2E", key=None, help=None, on_change=None, args=None, kwargs=None)
-    color_2 = st.sidebar.color_picker("Color 2", value="#0A24CA", key=None, help=None, on_change=None, args=None, kwargs=None)
-    color_3 = st.sidebar.color_picker("Color 3", value="#F7D31E", key=None, help=None, on_change=None, args=None, kwargs=None)
+    name = st.text_input('Name', 'User')
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        color_1 = st.color_picker("Color 1", value="#CE2E2E", key=None, help=None, on_change=None, args=None, kwargs=None)
+    with col2:
+        color_2 = st.color_picker("Color 2", value="#0A24CA", key=None, help=None, on_change=None, args=None, kwargs=None)
+    with col3:
+        color_3 = st.color_picker("Color 3", value="#F7D31E", key=None, help=None, on_change=None, args=None, kwargs=None)
 
     color_dict["Color_1"] = [float(p/255) for p in list(ImageColor.getcolor(color_1, "RGB"))]
     color_dict["Color_2"] = [float(p/255) for p in list(ImageColor.getcolor(color_2, "RGB"))]
@@ -46,16 +51,27 @@ def main():
 
     property_dict["color_list"] = ["Color_1", "Color_2", "Color_3"]
 
+    width = st.slider("Width", min_value=800, max_value=1600, value=None, step=80, format=None, key=None, help=None, on_change=None, args=None, kwargs=None)
+    height = st.slider("Height", min_value=800, max_value=1600, value=None, step=80, format=None, key=None, help=None, on_change=None, args=None, kwargs=None)
+
+    property_dict["size"] = [int(height/20), int(width/20)]
+
     m = Mondrian(color_dict=color_dict, property_dict=property_dict)
 
-    if st.sidebar.button('Run'):
+    if st.button('Run'):
         default = False
-        image_out, _ = m.make_figure(0, name=name, save=True)
-        st.image("./static/image/Mondrian_0_"+name+".png",
+        image_out, _, stream_item = m.make_figure(0, name=name)
+        st.image(image_out,
                  caption=f"Decompositoin by {name}'s AutoPiet",
-                 #use_column_width=True,
-                 width=600)
-        remove("./static/image/Mondrian_0_"+name+".png")
+                 use_column_width=True,
+                 output_format="PNG",
+                 width=width)
+        # remove("./static/image/Mondrian_0_"+name+".png")
+        st.download_button("Download Image", stream_item,
+                           file_name=f"{name.replace(' ', '_')}_Decompositoin_by_AutoPiet.png",
+                           mime=None, key=None,
+                           help=None, on_click=None,
+                           args=None, kwargs=None)
 
 if __name__ == "__main__":
     main()

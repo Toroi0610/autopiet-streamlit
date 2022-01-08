@@ -1,7 +1,7 @@
 property,A,B,C,D,E
 num_cross_point,2
 prob_shape,1,1,1,1,1
-size,55,55
+size,80,80
 figure_size,8,8
 color_of_line,black
 line_width,1

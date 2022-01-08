@@ -6,6 +6,8 @@ Created on Wed Jan 10 21:06:42 2018
 """
 
 import csv
+from PIL import Image
+from io import BytesIO
 
 # import pandas as pd
 import numpy as np
@@ -13,6 +15,7 @@ import matplotlib as mpl
 # mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
+from numpy.lib.shape_base import _hvdsplit_dispatcher
 fp_name = FontProperties(fname=r'./static/fonts/BRADHITC.ttf', size=25)
 import sys
 sys.setrecursionlimit(10000)
@@ -222,19 +225,29 @@ class Mondrian():
         fig_mat = self.set_color(fig_mat)
         fig_mat = self.set_diamond(fig_mat)
 
-        if save:
-            fig, ax = plt.subplots(1, 1, figsize=self.figsize, frameon=False)
-            ax.imshow(fig_mat)
+        height_ratio = 20
+        width_ratio = 20
 
-            ax.text(0.05*self.matsize[1], 0.95*self.matsize[0], name, color="black", fontproperties=fp_name)
+        # zoom
+        fig_mat = fig_mat.repeat(height_ratio, axis=0).repeat(width_ratio, axis=1)
 
-            plt.axis('off')
-            plt.tight_layout(pad=0)
-            print("SaveFig: " + f"./static/image/Mondrian_{image_num}_{name}.png")
-            plt.savefig(f"./static/image/Mondrian_{image_num}_{name}.png", transparent=True, bbox_inches='tight')
-            plt.close()
+        item = BytesIO()
 
-        return fig_mat, points_and_shapes
+        fig, ax = plt.subplots(1, 1, figsize=self.figsize, frameon=False)
+        ax.imshow(fig_mat)
+
+        ax.text(0.05*self.matsize[1]*width_ratio,
+                0.95*self.matsize[0]*height_ratio,
+                name, color="black", fontproperties=fp_name)
+
+        plt.axis('off')
+        plt.tight_layout(pad=0)
+        # print("SaveFig: " + f"./static/image/Mondrian_{image_num}_{name}.png")
+        plt.savefig(item, transparent=True, bbox_inches='tight', format='png')
+        plt.close()
+        fig_mat = Image.open(item)
+
+        return fig_mat, points_and_shapes, item
 
 
 if __name__ == '__main__':
