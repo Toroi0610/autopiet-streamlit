@@ -240,7 +240,7 @@ class Mondrian():
 if __name__ == '__main__':
     path_pallete="./inputs/palette.csv"
     path_property="./inputs/property.csv"
-    
+
     color_dict = {}
     with open(path_pallete, newline='') as csvfile:
         spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
