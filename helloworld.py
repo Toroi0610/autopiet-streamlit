@@ -30,7 +30,7 @@ def main():
                 row_sep = row[0].split(",")
                 property_dict[row_sep[0]] = row_sep[1:]
 
-    st.sidebar.image("./static/image/Mondrian_4_Candy.png",
+    st.sidebar.image("./static/image/sample.jpeg",
         caption=f"ex) Decompositoin by Candy's AutoPiet",
         #use_column_width=True,
         width=200)

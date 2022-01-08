@@ -133,6 +133,6 @@ dmypy.json
 .pyre/
 
 # images
-static/image/*.png
+*.png
 
 setup.sh
