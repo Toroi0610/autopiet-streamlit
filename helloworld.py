@@ -6,6 +6,12 @@ import streamlit as st
 from Mondrian import Mondrian
 
 
+st.set_page_config(
+     page_title='Auto Piet',
+     layout="wide",
+     initial_sidebar_state="expanded",
+)
+
 st.sidebar.title("AutoPiet")
 
 def main():
