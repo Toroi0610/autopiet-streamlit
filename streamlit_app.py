@@ -56,8 +56,8 @@ def main():
 
     property_dict["color_list"] = ["Color_1", "Color_2", "Color_3"]
 
-    width = st.slider("Width", min_value=800, max_value=1600, value=None, step=80, format=None, key=None, help=None, on_change=None, args=None, kwargs=None)
-    height = st.slider("Height", min_value=800, max_value=1600, value=None, step=80, format=None, key=None, help=None, on_change=None, args=None, kwargs=None)
+    width = st.slider("Width", min_value=800, max_value=1600, value=1200, step=80, format=None, key=None, help=None, on_change=None, args=None, kwargs=None)
+    height = st.slider("Height", min_value=800, max_value=1600, value=1200, step=80, format=None, key=None, help=None, on_change=None, args=None, kwargs=None)
 
     property_dict["size"] = [int(height/20), int(width/20)]
 
@@ -67,13 +67,13 @@ def main():
         default = False
         image_out, _, stream_item = m.make_figure(0, name=name)
         st.image(image_out,
-                 caption=f"Decompositoin by {name}'s AutoPiet",
+                 caption=f"Decomposition by {name}'s AutoPiet",
                  use_column_width=True,
                  output_format="PNG",
                  width=width)
         # remove("./static/image/Mondrian_0_"+name+".png")
         st.download_button("Download Image", stream_item,
-                           file_name=f"{name.replace(' ', '_')}_Decompositoin_by_AutoPiet.png",
+                           file_name=f"{name.replace(' ', '_')}_Decomposition_by_AutoPiet.png",
                            mime=None, key=None,
                            help=None, on_click=None,
                            args=None, kwargs=None)
