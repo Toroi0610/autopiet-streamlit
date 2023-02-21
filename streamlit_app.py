@@ -5,7 +5,6 @@ from PIL import ImageColor
 import streamlit as st
 from Mondrian import Mondrian
 
-
 st.set_page_config(
      page_title='Auto Piet',
      layout="wide",
