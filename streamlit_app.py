@@ -68,7 +68,7 @@ def main():
         image_out, _, stream_item = m.make_figure(0, name=name)
         st.image(image_out,
                  caption=f"Decomposition by {name}'s AutoPiet",
-                 use_column_width=True,
+                 use_container_width=True,
                  output_format="PNG",
                  width=width)
         # remove("./static/image/Mondrian_0_"+name+".png")
