@@ -15,7 +15,7 @@ import matplotlib as mpl
 # mpl.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
-from numpy.lib.shape_base import _hvdsplit_dispatcher
+
 fp_name = FontProperties(fname=r'./static/fonts/BRADHITC.ttf', size=25)
 import sys
 sys.setrecursionlimit(10000)
